@@ -1,0 +1,39 @@
+# This is your CI/CD pipeline "tool"
+name: Deploy Website
+
+# Run this tool "on" every "push" to the "main" branch
+on:
+  push:
+    branches: [ "main" ]
+
+# Give the tool permission to deploy
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  # Job 1: Build the site (in this case, just prepare files)
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out your code
+        uses: actions/checkout@v4
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+      - name: Upload the website files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' # Upload the root directory (where index.html is)
+
+  # Job 2: Deploy the site
+  deploy:
+    needs: build # This job "needs" the "build" job to finish first
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
