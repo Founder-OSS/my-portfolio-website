@@ -48,17 +48,16 @@ export default function Home() {
 
       <div className="terminal-body">
         
-        {/* NEW: ASCII Art Banner */}
-        <pre style={{ color: '#58a6ff', fontWeight: 'bold', marginBottom: '20px', fontSize: '0.7rem', lineHeight: '1.2' }}>
-{`
-  _____                      _              
- |  ___|__  _   _ _ __    __| | ___ _ __    
- | |_ / _ \\| | | | '_ \\  / _\` |/ _ \\ '__|   
- |  _| (_) | |_| | | | || (_| |  __/ |      
- |_|  \\___/ \\__,_|_| |_| \\__,_|\\___|_|      
-                                            
-`}
-        </pre>
+        {/* NEW HEADER: Matches the image above. Simple and unbreakable. */}
+        <div style={{ marginBottom: '25px', paddingBottom: '15px', borderBottom: '1px dashed #333' }}>
+            <h1 style={{ fontSize: '1.8rem', color: '#58a6ff', margin: 0, fontFamily: 'monospace' }}>
+                <span style={{ color: '#4af626', marginRight: '15px' }}>➜</span> 
+                Founder-OSS
+            </h1>
+            <p style={{ color: '#8b949e', fontSize: '0.9rem', marginTop: '8px', marginLeft: '35px' }}>
+                // Systems Engineering • Automation • Open Source
+            </p>
+        </div>
 
         {/* Section 1: Bio */}
         <div>
@@ -86,7 +85,10 @@ export default function Home() {
               repos.map((repo) => (
                 <li key={repo.id} className="project-entry">
                   <span className="project-name">./{repo.name}</span>
-                  {repo.language && <span className="tech-tag">{repo.language}</span>}
+                  
+                  {/* FIXED: Added marginRight to stop the squishing */}
+                  {repo.language && <span className="tech-tag" style={{ marginRight: '12px' }}>{repo.language}</span>}
+                  
                   <span className="tech-tag" style={{ background: 'none', color: '#666', paddingLeft: 0 }}>
                     [Last commit: {new Date(repo.updated_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}]
                   </span>
@@ -122,7 +124,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* NEW: Status Bar (The "Powerline" Look) */}
+      {/* Status Bar */}
       <div style={{
         position: 'absolute',
         bottom: 0,
