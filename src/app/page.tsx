@@ -36,7 +36,7 @@ export default function Home() {
   }, []);
 
   return (
-    // HARDCODED STYLE: Forces dark mode and monospace font even if CSS fails
+    // HARDCODED STYLE: Forces dark mode and monospace font
     <div style={{ 
         minHeight: '100vh', 
         backgroundColor: '#0d1117', 
@@ -168,7 +168,7 @@ export default function Home() {
         zIndex: 100
       }}>
         <div style={{ backgroundColor: '#58a6ff', color: '#0d1117', padding: '0 15px', height: '100%', display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>NORMAL</div>
-        <div style={{ backgroundColor: '#238636', color: '#fff', padding: '0 15px', height: '100%', display: 'flex', alignItems: 'center' }}>main</div>
+        <div style={{ backgroundColor: '#238636', color: '#fff', padding: '0 15px', height: '100%', display: 'flex', alignItems: 'center' }}>root</div>
         <div style={{ padding: '0 15px', color: '#8b949e' }}>founder-oss/portfolio</div>
         <div style={{ flexGrow: 1 }}></div>
         <div style={{ padding: '0 15px', color: '#8b949e' }}>utf-8</div>
